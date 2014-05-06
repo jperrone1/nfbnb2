@@ -1,0 +1,11 @@
+
+<h1>Welcome to NoFeeBnB!</h1> 
+
+	<%= current_user %> 
+
+	<% if current_user != nil %>
+ 	  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %> 
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Log in", new_user_session_path %>
+<% end %>
