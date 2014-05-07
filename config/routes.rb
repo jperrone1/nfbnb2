@@ -4,6 +4,10 @@ Rails.application.routes.draw do
  
   devise_for :users
 
+  get '/accommodations/new', to: 'accommodations#new', as: 'accommodations_new'
+  post '/accommodations', to: 'accommodations#create', as: 'accommodations'
+  get '/accommodations/:id', to: 'accommodations#show', as: 'accommodation'
+
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

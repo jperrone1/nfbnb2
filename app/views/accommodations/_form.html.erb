@@ -1,0 +1,45 @@
+
+<%= form_for @accommodation do |f| %>
+  <%= f.label :price %>
+  <%= f.text_field :price, :autofocus => true %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :listing_type %>
+  <%= f.text_field :listing_type %>
+  <br>
+  <%= f.label :locale %>
+  <%= f.text_field :locale %>
+  <br>
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+  <br>  
+  <%= f.label :address1 %>
+  <%= f.text_field :address1 %>
+  <br>  
+  <%= f.label :address2 %>
+  <%= f.text_field :address2 %>
+  <br>
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+  <br>
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  <br>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  <br>
+  <%#= f.label :image %>
+  <%#= f.text_field :image %>
+  <br>
+<!--   <div class="input-group">
+    <%# Ingredient.order(:name).each do |ingredient| %>
+      <span class="input-group-addon"><%#= ingredient.name %>
+      <%#= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, ingredient.in?(@recipe.ingredients.to_a), {class: "checkbox inline"} %>
+      </span>
+    <%# end %>
+  </div> -->
+  <p><p>
+  <%= f.submit  class: "btn btn-primary" %>
+<% end %>
