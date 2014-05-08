@@ -1,5 +1,21 @@
 <h1>Listing Detail Page</h1>
 
+  <li><%= link_to('New Listing', new_accommodation_path) %></li>
+  <li><%= link_to('Edit Listing', edit_accommodation_path(@accommodation)) %></li>
+  <li><%= link_to('Delete Listing', @accommodation, :method => :delete, :confirm => 'Are you sure?') %></li>
+  <div class='spacer'></div>
+
+<p>Price: <%= @accommodation.price %></p>
+<p>Description: <%= @accommodation.description %></p>
+<p>Type: <%= @accommodation.listing_type %></p>
+<p>Locale: <%= @accommodation.locale %></p>
+<p>City: <%= @accommodation.city %></p>
+<p>Address Line 1: <%= @accommodation.address1 %></p>
+<p>Address Line 2: <%= @accommodation.address2 %></p>
+<p>State: <%= @accommodation.state %></p>
+<p>Zip: <%= @accommodation.zip %></p>
+<p>Phone: <%= @accommodation.phone %></p>
+
 <!-- <ul class="nav nav-pills">
   <li><%#= link_to('New Recipe', new_recipe_path) %></li>
   <li><%#= link_to('Edit Recipe', edit_recipe_path(@recipe)) %></li>

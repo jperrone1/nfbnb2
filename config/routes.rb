@@ -1,14 +1,71 @@
 Rails.application.routes.draw do
 
+  resources :accommodations
+
   root to: 'accommodations#index'
  
-  devise_for :users
+  devise_for :users 
 
-  get '/accommodations/new', to: 'accommodations#new', as: 'accommodations_new'
-  post '/accommodations', to: 'accommodations#create', as: 'accommodations'
-  get '/accommodations/:id', to: 'accommodations#show', as: 'accommodation'
+  # get '/accommodations/new', to: 'accommodations#new', as: 'accommodations_new'
+  # post '/accommodations', to: 'accommodations#create', as: 'accommodations'
+  # get '/accommodations/:id', to: 'accommodations#show', as: 'accommodation'
 
 end
+
+# Routes as of 5/7/14 5:19 PM: 
+# Jeffs-MacBook-Pro-2:nfbnb Jeff$ rake routes
+#                   Prefix Verb   URI Pattern                        Controller#Action
+#           accommodations GET    /accommodations(.:format)          accommodations#index
+#                          POST   /accommodations(.:format)          accommodations#create
+#        new_accommodation GET    /accommodations/new(.:format)      accommodations#new
+#       edit_accommodation GET    /accommodations/:id/edit(.:format) accommodations#edit
+#            accommodation GET    /accommodations/:id(.:format)      accommodations#show
+#                          PATCH  /accommodations/:id(.:format)      accommodations#update
+#                          PUT    /accommodations/:id(.:format)      accommodations#update
+#                          DELETE /accommodations/:id(.:format)      accommodations#destroy
+#                     root GET    /                                  accommodations#index
+#         new_user_session GET    /users/sign_in(.:format)           devise/sessions#new
+#             user_session POST   /users/sign_in(.:format)           devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)          devise/sessions#destroy
+#            user_password POST   /users/password(.:format)          devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)      devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format)     devise/passwords#edit
+#                          PATCH  /users/password(.:format)          devise/passwords#update
+#                          PUT    /users/password(.:format)          devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)            devise/registrations#cancel
+#        user_registration POST   /users(.:format)                   devise/registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)           devise/registrations#new
+#   edit_user_registration GET    /users/edit(.:format)              devise/registrations#edit
+#                          PATCH  /users(.:format)                   devise/registrations#update
+#                          PUT    /users(.:format)                   devise/registrations#update
+#                          DELETE /users(.:format)                   devise/registrations#destroy
+
+
+  
+# Routes before adding Resources: 
+# Jeffs-MacBook-Pro-2:nfbnb Jeff$ rake routes
+#                   Prefix Verb   URI Pattern                    Controller#Action
+#                     root GET    /                              accommodations#index
+#         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
+#             user_session POST   /users/sign_in(.:format)       devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+#            user_password POST   /users/password(.:format)      devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+#                          PATCH  /users/password(.:format)      devise/passwords#update
+#                          PUT    /users/password(.:format)      devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)        devise/registrations#cancel
+#        user_registration POST   /users(.:format)               devise/registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)       devise/registrations#new
+#   edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+#                          PATCH  /users(.:format)               devise/registrations#update
+#                          PUT    /users(.:format)               devise/registrations#update
+#                          DELETE /users(.:format)               devise/registrations#destroy
+#       accommodations_new GET    /accommodations/new(.:format)  accommodations#new
+#           accommodations POST   /accommodations(.:format)      accommodations#create
+#            accommodation GET    /accommodations/:id(.:format)  accommodations#show
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
