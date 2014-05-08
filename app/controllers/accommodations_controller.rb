@@ -1,7 +1,12 @@
 class AccommodationsController < ApplicationController
 
   def index 
+    # @accommodation = Accommodation.new
     @accommodations = Accommodation.all
+  end
+
+  def results
+    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city])
   end
 
   def new
@@ -9,9 +14,19 @@ class AccommodationsController < ApplicationController
   end
 
   def create
-    accommodation = Accommodation.create accommodation_params
-    redirect_to(accommodation)
+    @accommodation = Accommodation.new(accommodation_params)
+    
+    if @accommodation.save
+     redirect_to @accommodation, notice: 'Listing was successfully created.'
+     else 
+       render action: 'new'
+    end
   end
+
+  # def create
+  #   accommodation = Accommodation.create accommodation_params
+  #   redirect_to(accommodation)
+  # end
 
   def show
     @accommodation = Accommodation.find(params[:id])
@@ -36,7 +51,7 @@ class AccommodationsController < ApplicationController
 
   private
     def accommodation_params
-      params.require(:accommodation).permit(:price, :description, :listing_type, :locale, :city, :address1, :address2, :state, :zip, :phone)
+      params.require(:accommodation).permit(:price, :description, :listing_type, :locale, :city, :address1, :address2, :state, :zip, :phone, :image)
     end
 
 end

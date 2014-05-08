@@ -1,0 +1,29 @@
+
+<h1>Search Results</h1>
+
+<ul class="nav nav-pills">
+  <li>
+    <%= link_to('New Search', accommodations_path) %>
+  </li>
+</ul>
+
+<% @accommodations.each do |accommodation| %>
+  <div class="row">
+     <div class="col-md-4 col-sm-4">
+      <p class="lead"><%= link_to(accommodation.description, accommodation) %>
+      <p>Price: <%= accommodation.price %></p>
+      <p>Type: <%= accommodation.listing_type %></p>
+      <p>Locale: <%= accommodation.locale %></p>
+      <p>City: <%= accommodation.city %></p>
+      <p>Address Line 1: <%= accommodation.address1 %></p>
+      <p>Address Line 2: <%= accommodation.address2 %></p>
+      <p>State: <%= accommodation.state %></p>
+      <p>Zip: <%= accommodation.zip %></p>
+      <p>Phone: <%= accommodation.phone %></p>
+    </div>
+
+    <div class="col-md-8 col-sm-8">
+      <p><%= image_tag accommodation.image.url(:square) %></p>
+    </div>
+  </div>
+<% end %>

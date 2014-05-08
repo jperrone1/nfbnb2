@@ -1,45 +1,63 @@
 
-<%= form_for @accommodation do |f| %>
-  <%= f.label :price %>
-  <%= f.text_field :price, :autofocus => true %>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <br>
-  <%= f.label :listing_type %>
-  <%= f.text_field :listing_type %>
-  <br>
-  <%= f.label :locale %>
-  <%= f.text_field :locale %>
-  <br>
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-  <br>  
-  <%= f.label :address1 %>
-  <%= f.text_field :address1 %>
-  <br>  
-  <%= f.label :address2 %>
-  <%= f.text_field :address2 %>
-  <br>
-  <%= f.label :state %>
-  <%= f.text_field :state %>
-  <br>
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
-  <br>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  <br>
-  <%#= f.label :image %>
-  <%#= f.text_field :image %>
-  <br>
-<!--   <div class="input-group">
-    <%# Ingredient.order(:name).each do |ingredient| %>
-      <span class="input-group-addon"><%#= ingredient.name %>
-      <%#= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, ingredient.in?(@recipe.ingredients.to_a), {class: "checkbox inline"} %>
-      </span>
-    <%# end %>
-  </div> -->
-  <p><p>
-  <%= f.submit  class: "btn btn-primary" %>
+<%= form_for(@accommodation, multipart: true) do |f| %>
+  <% if @accommodation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accommodation.errors.count, "error") %> prohibited this accommodation from being saved:</h2>
+
+      <ul>
+      <% @accommodation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price, :autofocus => true %>
+  </div>
+  <div class="field">  
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field"> 
+    <%= f.label :listing_type %>
+    <%= f.text_field :listing_type %>
+  </div>
+  <div class="field"> 
+    <%= f.label :locale %>
+    <%= f.text_field :locale %>
+  </div>
+  <div class="field"> 
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field"> 
+    <%= f.label :address1 %>
+    <%= f.text_field :address1 %>
+  </div>
+  <div class="field">  
+    <%= f.label :address2 %>
+    <%= f.text_field :address2 %>
+  </div>
+  <div class="field"> 
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field"> 
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field"> 
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Update listing' %>
+    <%= link_to 'Nevermind', accommodations_path, class: 'button' %>
+  </div>
 <% end %>

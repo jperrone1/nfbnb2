@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :accommodations
 
   root to: 'accommodations#index'
+
+  get '/accommodation_results/', to: 'accommodations#results', as: 'search_results' 
  
   devise_for :users 
 

@@ -7,5 +7,20 @@
  	  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   <% else %> 
     <%= link_to "Sign up", new_user_registration_path %>
+    or 
     <%= link_to "Log in", new_user_session_path %>
+<% end %>
+<br>
+<br>
+<%= form_for :search, url: search_results_path, method: "get" do |f| %>
+
+  <div class="field"> 
+    <%= f.label :city %>
+    <%= f.text_field :city, :autofocus => true %>
+  </div>
+
+  <div class="actions">    
+    <%= f.submit 'Search' %>
+  </div>
+  
 <% end %>
