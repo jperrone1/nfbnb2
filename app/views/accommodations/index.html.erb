@@ -1,8 +1,4 @@
 
-<h1>Welcome to NoFeeBnB!</h1> 
-
-	<%= current_user %> 
-
 	<% if current_user != nil %>
  	  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   <% else %> 
@@ -10,8 +6,11 @@
     or 
     <%= link_to "Log in", new_user_session_path %>
 <% end %>
-<br>
-<br>
+
+<h1>Welcome to NoFeeBnB!</h1> 
+<h2>Search for listings in your favorite city:</h2>
+
+
 <%= form_for :search, url: search_results_path, method: "get" do |f| %>
 
   <div class="field"> 
@@ -22,5 +21,5 @@
   <div class="actions">    
     <%= f.submit 'Search' %>
   </div>
-  
+
 <% end %>

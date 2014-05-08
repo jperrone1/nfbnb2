@@ -6,7 +6,7 @@ class AccommodationsController < ApplicationController
   end
 
   def results
-    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city])
+    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase)
   end
 
   def new
