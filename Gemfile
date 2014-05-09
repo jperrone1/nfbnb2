@@ -31,6 +31,9 @@ gem 'paperclip'
 # Amazon web services gem required by Paperclip:
 gem 'aws-sdk'
 
+# Gem to allow pushing of data to Heroku: 
+gem 'taps'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

@@ -21,6 +21,7 @@
   <p>State: <%= @accommodation.state %></p>
   <p>Zip: <%= @accommodation.zip %></p>
   <p>Phone: <%= @accommodation.phone %></p>
+  <p>Contact Email: <%= User.find(@accommodation.user_id).email %>
 
 <br>
   <li><%= link_to('New Listing', new_accommodation_path) %></li>

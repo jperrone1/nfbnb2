@@ -1,5 +1,7 @@
 class AccommodationsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  
   def index 
     # @accommodation = Accommodation.new
     @accommodations = Accommodation.all
@@ -15,7 +17,7 @@ class AccommodationsController < ApplicationController
 
   def create
     @accommodation = Accommodation.new(accommodation_params)
-    
+    @accommodation.user_id = current_user.id
     if @accommodation.save
      redirect_to @accommodation, notice: 'Listing was successfully created.'
      else 
@@ -56,6 +58,40 @@ class AccommodationsController < ApplicationController
 
 end
 
+
+
+# def edit
+    
+#     @chair = current_user.chairs.find_by_id(params[:id])
+    
+#     if @chair.nil?
+#       flash[:notice] = "Not Authorized!"
+#       redirect_to chairs_path
+#     else 
+#       render :edit
+#     end
+#   end
+
+#   def update
+#     @chair = current_user.chairs.find_by_id(params[:id])
+#     if @chair.nil?
+#       render :file => "#{Rails.root}/public/422", :layout => false, :status => 422
+#     end
+#     #not sure what attributes is doing here
+#     @chair.update_attributes chair_params 
+#     redirect_to(@chair)
+#     # end
+#   end
+
+#   def destroy
+#     begin
+#       @chair = current_user.chairs.find(params[:id])
+#       @chair.destroy
+#       redirect_to(dashboard_path)
+#     rescue 
+#       render :file => "#{Rails.root}/public/422", :layout => false, :status => 422
+#     end
+#   end
 
 # class RecipesController < ApplicationController
 #   include RecipesHelper
