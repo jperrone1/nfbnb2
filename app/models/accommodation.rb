@@ -10,4 +10,6 @@ class Accommodation < ActiveRecord::Base
   # Paperclip method to validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  belongs_to :user
+
 end

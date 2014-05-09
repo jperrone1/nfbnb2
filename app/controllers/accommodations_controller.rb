@@ -16,8 +16,7 @@ class AccommodationsController < ApplicationController
   end
 
   def create
-    @accommodation = Accommodation.new(accommodation_params)
-    @accommodation.user_id = current_user.id
+    @accommodation = current_user.accommodations.new(accommodation_params)
     if @accommodation.save
      redirect_to @accommodation, notice: 'Listing was successfully created.'
      else 
