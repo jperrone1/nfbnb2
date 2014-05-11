@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Accommodation do
-  it 'should respond to all accommodation fields' do
+  it 'should respond to accommodation fields except image not tested here' do
     accommodation = Accommodation.create(price:100, description:'Beautiful views and lots of sun.', listing_type:'room', locale:'Glen Park', city:'San Francisco', address1:'145 Moreland Street', address2:'', state:'CA', zip:'94131', phone:'(415)555-1212')
     accommodation.should respond_to(:price)
     accommodation.should respond_to(:description)

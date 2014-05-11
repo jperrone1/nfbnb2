@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # This method allows the first_name and last_name fields to be
+  # added to the Devise User model. 
   def configure_permit
     devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name)
   end

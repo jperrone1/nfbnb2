@@ -1,17 +1,23 @@
 
-	<% if current_user != nil %>
- 	  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-  <% else %> 
-    <%= link_to "Sign up", new_user_registration_path %>
-    or 
-    <%= link_to "Log in", new_user_session_path %>
+<!-- If a user is signed in, then show the Log out button, otherwise show
+Sign up and Log in links: -->
+
+<% if current_user != nil %>
+	<%= button_to "Log out", destroy_user_session_path, method: :delete %>
+<% else %> 
+  <%= link_to "Sign up", new_user_registration_path %>
+  or 
+  <%= link_to "Log in", new_user_session_path %>
 <% end %>
 
+<!-- Show a link to allow a user to list a new accommodation: -->
 <%= link_to "List Space", new_accommodation_path %>
 
 <h1>Welcome to NoFeeBnB!</h1> 
+<h2>NoFeeBnb allows you to list or rent a place to stay.</h2>
+<h2>It's free to list, and we don't charge fees to renters!</h2>
+<br>
 <h2>Search for listings in your favorite city:</h2>
-
 
 <%= form_for :search, url: search_results_path, method: "get" do |f| %>
 

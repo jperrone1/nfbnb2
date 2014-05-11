@@ -1,22 +1,17 @@
-<h3>Listing Detail Page</h3>
+<h3>Listing Details And Contact Information</h3>
 
 <h5>(click your browser back button to return to search results)</h5>
-<!-- <ul class="nav nav-pills">
-  <li>
-    <%#= link_to('Back To Search Results', search_results_path) %>
-  </li>
-</ul>  --> 
+<!-- Replace this with a button to do this when possible. -->
 
   <div class='spacer'></div>
-
+  <!--   Image is displayed using Paperclip, hosted on Amazon s3. -->
   <p><%= image_tag @accommodation.image.url(:square) %></p>
   <p>Description: <%= @accommodation.description %></p>
   <p>Price: $<%= @accommodation.price %> per night</p>
-
   <p>Type: <%= @accommodation.listing_type %></p>
   <p>Locale: <%= @accommodation.locale %></p>
-  <p>Address Line 1: <%= @accommodation.address1 %></p>
-  <p>Address Line 2: <%= @accommodation.address2 %></p>
+  <p>Address: <%= @accommodation.address1 %></p>
+  <p>Address 2: <%= @accommodation.address2 %></p>
   <p>City: <%= @accommodation.city %></p>
   <p>State: <%= @accommodation.state %></p>
   <p>Zip: <%= @accommodation.zip %></p>

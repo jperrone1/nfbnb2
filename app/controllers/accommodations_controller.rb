@@ -1,13 +1,16 @@
 class AccommodationsController < ApplicationController
 
+  # Authenticate user using Devise for methods requiring sign-in: 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index 
-    # @accommodation = Accommodation.new
+    # Presently I'm not showing all results anywhere; only by searching. 
     @accommodations = Accommodation.all
   end
 
+
   def results
+    # This line allows searching with city name in upper or lower case. 
     @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase)
   end
 
@@ -16,6 +19,7 @@ class AccommodationsController < ApplicationController
   end
 
   def create
+    # You must be signed in to create a listing, and this code fills in your user id:  
     @accommodation = current_user.accommodations.new(accommodation_params)
     if @accommodation.save
      redirect_to @accommodation, notice: 'Listing was successfully created.'
@@ -24,14 +28,8 @@ class AccommodationsController < ApplicationController
     end
   end
 
-  # def create
-  #   accommodation = Accommodation.create accommodation_params
-  #   redirect_to(accommodation)
-  # end
-
   def show
     @accommodation = Accommodation.find(params[:id])
-#     @ingredients = @recipe.ingredients
   end
 
   def edit
@@ -56,84 +54,3 @@ class AccommodationsController < ApplicationController
     end
 
 end
-
-
-
-# def edit
-    
-#     @chair = current_user.chairs.find_by_id(params[:id])
-    
-#     if @chair.nil?
-#       flash[:notice] = "Not Authorized!"
-#       redirect_to chairs_path
-#     else 
-#       render :edit
-#     end
-#   end
-
-#   def update
-#     @chair = current_user.chairs.find_by_id(params[:id])
-#     if @chair.nil?
-#       render :file => "#{Rails.root}/public/422", :layout => false, :status => 422
-#     end
-#     #not sure what attributes is doing here
-#     @chair.update_attributes chair_params 
-#     redirect_to(@chair)
-#     # end
-#   end
-
-#   def destroy
-#     begin
-#       @chair = current_user.chairs.find(params[:id])
-#       @chair.destroy
-#       redirect_to(dashboard_path)
-#     rescue 
-#       render :file => "#{Rails.root}/public/422", :layout => false, :status => 422
-#     end
-#   end
-
-# class RecipesController < ApplicationController
-#   include RecipesHelper
-
-#   before_filter :signed_in_user, only: [:create, :new, :edit, :update, :destroy]
-#   before_filter :check_recipe_owner, only: [:edit, :update, :destroy]
-
-#   def index
-#     @recipes = Recipe.all
-#   end
-
-#   def new
-#     @recipe = Recipe.new
-#   end
-
-#   def create
-#     recipe = Recipe.create recipe_params
-#     redirect_to(recipe)
-#   end
-
-#   def show
-#     @recipe = Recipe.find(params[:id])
-#     @ingredients = @recipe.ingredients
-#   end
-
-#   def edit
-#     @recipe = Recipe.find(params[:id])
-#   end
-
-#   def update
-#     recipe = Recipe.find(params[:id])
-#     recipe.update_attributes recipe_params
-#     redirect_to(recipe)
-#   end
-
-#   def destroy
-#     recipe = Recipe.find(params[:id])
-#     recipe.delete
-#     redirect_to(recipes_path)
-#   end
-
-#   private
-#     def recipe_params
-#       params.require(:recipe).permit(:name, :course, :cooktime, :servingsize, :instructions, :image)
-#     end
-# end
