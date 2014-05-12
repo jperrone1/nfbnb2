@@ -11,7 +11,7 @@ class AccommodationsController < ApplicationController
 
   def results
     # This line allows searching with city name in upper or lower case. 
-    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase)
+    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase).order(:price)
   end
 
   def new

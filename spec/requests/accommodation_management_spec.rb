@@ -1,4 +1,6 @@
-# # accommodation_management_spec.rb
+# accommodation_management_spec.rb
+
+# require "spec_helper"
 
 # describe "Accommodations Management" do 
 
