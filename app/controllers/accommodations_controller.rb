@@ -13,6 +13,8 @@ class AccommodationsController < ApplicationController
  
     if @search.valid?
       @accommodations = @search.search_accomodations_by_form.order(:price => :desc)
+    else 
+      flash[:errors]=@search.errors.full_messages
     end
   end
 
@@ -45,15 +47,26 @@ class AccommodationsController < ApplicationController
   end
 
   def update
-    accommodation = Accommodation.find(params[:id])
-    accommodation.update_attributes accommodation_params
-    redirect_to(accommodation)
+
+    @accommodation = Accommodation.find(params[:id])
+      if @accommodation.user_id == current_user.id
+        @accommodation.update_attributes accommodation_params
+        redirect_to(accommodation_path)
+      else
+        flash[:errors]="You can't edit this because it's not yours."
+        redirect_to(accommodation_path)
+      end
   end
 
   def destroy
-    accommodation = Accommodation.find(params[:id])
-    accommodation.delete
-    redirect_to(accommodations_path)
+    @accommodation = Accommodation.find(params[:id])
+      if @accommodation.user_id == current_user.id
+        @accommodation.delete
+        redirect_to(accommodation_path)
+      else
+        flash[:errors]="You can't delete this because it's not yours."
+        redirect_to(accommodation_path)
+      end
   end
 
   private

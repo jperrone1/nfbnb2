@@ -29,13 +29,13 @@ class SimpleSearch
     scope = Accommodation.all
     unless self.q.blank?
       scope = scope.where("city ILIKE (? || '%')", self.q)
-      puts "Added city scope: #{scope.to_sql}"
+      # puts "Added city scope: #{scope.to_sql}"
     end  
     unless self.max_price.blank?
       scope = scope.where('price <= ?', self.max_price)
-      puts "Added price scope: #{scope.to_sql}"
+      # puts "Added price scope: #{scope.to_sql}"
     end  
-    puts "Complete search for search_accomodations_by_form: #{scope.to_sql}"
+    # puts "Complete search for search_accomodations_by_form: #{scope.to_sql}"
     scope
   end  
 

@@ -22,8 +22,10 @@
   <div class="actions">    
     <%= f.submit 'Search' %>
   </div>
-
 <% end %>
+
+<% flash[:errors] %>
+
 <% if @accommodations.blank? %> 
   <p>Your search - <%= @search.q %> <%= lookup_price_range_label @search.max_price %> - did not match any documents.</p>
 <% else %> 
