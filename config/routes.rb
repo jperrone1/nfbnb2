@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'accommodations#index'
 
+  get '/accommodation_search/', to: 'accommodations#search', as: 'search_other'
+
   get '/accommodation_results/', to: 'accommodations#results', as: 'search_results' 
- 
+
   devise_for :users 
 
 end

@@ -4,6 +4,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+include Devise::TestHelpers
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -13,6 +15,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -40,3 +44,15 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+  # Define a method which signs in as a valid user.
+    def sign_in_as_a_valid_user
+        # Ask factory girl to generate a valid user for us.
+        # @user ||= FactoryGirl.create :user
+        # Actually, I'm not using FactoryGirl, so instead: 
+        @user = User.create(email:'gt@nf.com', first_name:'George', last_name:'Tyrebiter', password:'87654321', password_confirmation:'87654321')
+
+        # We action the login request using the parameters before we begin.
+        # The login requests will match these to the user we just created in the factory, and authenticate us.
+        post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[first_name]' => @user.first_name, 'user[last_name]' => @user.last_name, 'user[password]' => @user.password
+    end

@@ -1,16 +1,33 @@
 
-<h1>Search Results</h1>
-
-<ul class="nav nav-pills">
-  <li>
-    <%= link_to('New Search', accommodations_path) %>
-  </li>
-</ul>
+<h1>City Search Results</h1>
 
 
-<h2>Search for listings in your favorite city:</h2>
+<%= form_for @search, url: search_other_path, method: "get" do |f| %>
+
+ 
+  <% @search.errors.each do |attr, msg| %>
+  <div class="error"><%= msg %></div> 
+  <% end %>
 
 
+  <div class="field"> 
+    <%= f.label :city %>
+    <%= f.text_field :q, :autofocus => true %>
+  </div>
+  <div class="field"> 
+    <%= f.label :max_price %>
+    <%= f.select :max_price, options_for_select(accommodation_price_ranges, :selected => @search.max_price) %>
+  </div>
+
+  <div class="actions">    
+    <%= f.submit 'Search' %>
+  </div>
+
+<% end %>
+<% if @accommodations.blank? %> 
+  <p>Your search - <%= @search.q %> <%= lookup_price_range_label @search.max_price %> - did not match any documents.</p>
+<% else %> 
+ 
 <% @accommodations.each do |accommodation| %>
 
   <div class="col-md-8 col-sm-8">
@@ -25,6 +42,7 @@
       <p>Type: <%= accommodation.listing_type %></p>
       <p>Address: <%= accommodation.address1 %></p>
       <p>Address 2: <%= accommodation.address2 %></p>
+      <p>Phone: <%= accommodation.phone %></p>
 
 <!--  I decided not to include these fields in the search results now:
 
@@ -35,4 +53,5 @@
     </div>
   </div>
   <p> --------------- </p>
+<% end %>
 <% end %>

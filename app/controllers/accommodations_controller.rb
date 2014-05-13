@@ -2,16 +2,24 @@ class AccommodationsController < ApplicationController
 
   # Authenticate user using Devise for methods requiring sign-in: 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  
+
   def index 
     # Presently I'm not showing all results anywhere; only by searching. 
     @accommodations = Accommodation.all
   end
 
+  def search
+    @search = SimpleSearch.new params.require(:simple_search).permit(:q, :max_price)
+ 
+    if @search.valid?
+      @accommodations = @search.search_accomodations_by_form.order(:price => :desc)
+    end
+  end
 
   def results
     # This line allows searching with city name in upper or lower case. 
-    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase).order(:price)
+    @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase)
+    @accommodations = @accommodations.order(:price)
   end
 
   def new

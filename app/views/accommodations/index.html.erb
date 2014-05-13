@@ -17,13 +17,28 @@ Sign up and Log in links: -->
 <h2>NoFeeBnb allows you to list or rent a place to stay.</h2>
 <h2>It's free to list, and we don't charge fees to renters!</h2>
 <br>
+<!-- <h2>Search for listings in your favorite city:</h2>
+
+<%#= form_for :search, url: search_results_path, method: "get" do |f| %>
+
+  <div class="field"> 
+    <%#= f.label :city %>
+    <%#= f.text_field :city, :autofocus => true %>
+  </div>
+
+  <div class="actions">    
+    <%#= f.submit 'Search' %>
+  </div>
+
+<%# end %> -->
+
 <h2>Search for listings in your favorite city:</h2>
 
-<%= form_for :search, url: search_results_path, method: "get" do |f| %>
+<%= form_for :simple_search, url: search_other_path, method: "get" do |f| %>
 
   <div class="field"> 
     <%= f.label :city %>
-    <%= f.text_field :city, :autofocus => true %>
+    <%= f.text_field :q, :autofocus => true %>
   </div>
 
   <div class="actions">    
