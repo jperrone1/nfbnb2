@@ -40,20 +40,27 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+gem 'bootstrap-sass'
+
+gem 'bootstrap-generators', '~> 3.1.1'
+
+gem 'forgery'
+
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara' # Capybara simulates a user for testing. 
   gem 'factory_girl_rails'
-  gem 'pry'
-  gem 'dotenv-rails'
+  gem 'pry' # Debugging tool. 
+  gem 'dotenv-rails' # For use of .env file. 
 end
 
 group :development do
-  gem 'quiet_assets'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'awesome_print'
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem 'quiet_assets' # Suppresses messages in the development log.
+  gem 'better_errors' # More useful error messages. 
+  gem 'binding_of_caller' # Allows grabbing of bindings up the call stack. 
+  gem 'awesome_print' # Prints Ruby objects with proper indentation. 
+  gem 'pry-rails' # Makes Pry work in the Rails console. 
+  gem 'pry-byebug' # Allows stepping through code in Pry, etc. 
 end
 
 # rails_12factor equired for Heroku deployment: 
