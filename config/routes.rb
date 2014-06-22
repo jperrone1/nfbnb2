@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :accommodations
 
-  root to: 'accommodations#index'
+  root to: 'accommodations#welcome'
 
   get '/accommodation_search/', to: 'accommodations#search', as: 'search_other'
 

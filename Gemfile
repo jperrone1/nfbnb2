@@ -46,6 +46,8 @@ gem 'bootstrap-generators', '~> 3.1.1'
 
 gem 'forgery'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara' # Capybara simulates a user for testing. 

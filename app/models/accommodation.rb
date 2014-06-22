@@ -13,4 +13,13 @@ class Accommodation < ActiveRecord::Base
   # Create ActiveRecord methods to facilitate data retrieval:
   belongs_to :user
 
+  
+
+  geocoded_by :full_street_address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
+  def full_street_address
+    [address1, address2, city, state, zip].compact.join(', ')
+  end
+
 end

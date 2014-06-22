@@ -17,3 +17,5 @@
 {
   color: red;
 }
+
+#map-canvas { height: 400px; width: 400px }

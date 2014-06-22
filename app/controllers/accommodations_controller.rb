@@ -3,9 +3,25 @@ class AccommodationsController < ApplicationController
   # Authenticate user using Devise for methods requiring sign-in: 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  def welcome
+
+  end
+
   def index 
     # Presently I'm not showing all results anywhere; only by searching. 
-    @accommodations = Accommodation.all
+    # @accommodations = Accommodation.all 
+
+     @pins = Accommodation.all
+
+    respond_to do |f|
+      f.json { render :json => @pins}
+    end
+
+  end
+
+# Need to modify this code to show pins for accommodations: 
+  def pin_show
+
   end
 
   def search
