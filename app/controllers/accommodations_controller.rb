@@ -47,6 +47,7 @@ class AccommodationsController < ApplicationController
   def create
     # You must be signed in to create a listing, and this code fills in your user id:  
     @accommodation = current_user.accommodations.new(accommodation_params)
+    # binding.pry
     if @accommodation.save
      redirect_to @accommodation, notice: 'Listing was successfully created.'
      else 
