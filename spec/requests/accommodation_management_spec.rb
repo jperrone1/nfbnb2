@@ -4,7 +4,7 @@ require "spec_helper"
 
 
 
-describe "Accommodations Management" do 
+describe "Accommodations Management", :type => :request do 
 
   describe 'creating a new accommodation' do
 

@@ -51,7 +51,6 @@ end
         # @user ||= FactoryGirl.create :user
         # Actually, I'm not using FactoryGirl, so instead: 
         @user = User.create(email:'gt@nf.com', first_name:'George', last_name:'Tyrebiter', password:'87654321', password_confirmation:'87654321')
-
         # We action the login request using the parameters before we begin.
         # The login requests will match these to the user we just created in the factory, and authenticate us.
         post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[first_name]' => @user.first_name, 'user[last_name]' => @user.last_name, 'user[password]' => @user.password

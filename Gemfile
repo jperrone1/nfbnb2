@@ -48,6 +48,8 @@ gem 'forgery'
 
 gem 'geocoder'
 
+gem 'gon'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara' # Capybara simulates a user for testing. 

@@ -9,8 +9,9 @@ $(document).ready(function(){
     // console.log(map);
 
     var pins = [];
-    $.get('/accommodations.json').done(function(data) {
+    $.get('/accommodation_results.json', {search: {city: $("#simple_search_q").val()}}).done(function(data) {
       pins = data
+      map.panTo({ lat: pins[0].latitude, lng: pins[0].longitude });
       $.each(pins, function(index, item){
         addPin(item.latitude, item.longitude, item.name);
       });

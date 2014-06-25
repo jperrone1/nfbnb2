@@ -2,7 +2,7 @@ class SimpleSearch
   include ActiveModel::Model
 
   #Generic Search 'q'
-  attr_accessor :q, :max_price
+  attr_accessor :q, :max_price, :zip
   validates_length_of :q, minimum: 2, message: 'Please enter at least 2 letters to search'
 
   # Add other search params or validations here:
@@ -35,6 +35,12 @@ class SimpleSearch
       scope = scope.where('price <= ?', self.max_price)
       # puts "Added price scope: #{scope.to_sql}"
     end  
+
+    # unless self.zip.blank?
+    #   scope = scope.where('zip', self.zip)
+    #   # puts "Added zip scope: #{scope.to_sql}"
+    # end  
+
     # puts "Complete search for search_accomodations_by_form: #{scope.to_sql}"
     scope
   end  

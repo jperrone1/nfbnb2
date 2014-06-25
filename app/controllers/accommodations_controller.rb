@@ -10,22 +10,10 @@ class AccommodationsController < ApplicationController
   def index 
     # Presently I'm not showing all results anywhere; only by searching. 
     # @accommodations = Accommodation.all 
-
-     @pins = Accommodation.all
-
-    respond_to do |f|
-      f.json { render :json => @pins}
-    end
-
-  end
-
-# Need to modify this code to show pins for accommodations: 
-  def pin_show
-
   end
 
   def search
-    @search = SimpleSearch.new params.require(:simple_search).permit(:q, :max_price)
+    @search = SimpleSearch.new params.require(:simple_search).permit(:q, :max_price, :zip)
  
     if @search.valid?
       @accommodations = @search.search_accomodations_by_form.order(:price => :desc)
@@ -38,6 +26,12 @@ class AccommodationsController < ApplicationController
     # This line allows searching with city name in upper or lower case. 
     @accommodations = Accommodation.where("lower(city)=?", params[:search][:city].downcase)
     @accommodations = @accommodations.order(:price)
+
+    respond_to do |f|
+      f.json { render :json => @accommodations}
+      f.html
+    end
+
   end
 
   def new
