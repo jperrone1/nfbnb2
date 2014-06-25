@@ -14,4 +14,10 @@ describe Accommodation do
     accommodation.should respond_to(:zip)
     accommodation.should respond_to(:phone)
     end
+
+  it 'should respond to accommodation price field' do
+    accommodation = Accommodation.create(price:100, description:'Beautiful views and lots of sun.', listing_type:'room', locale:'Glen Park', city:'San Francisco', address1:'145 Moreland Street', address2:'', state:'CA', zip:'94131', phone:'(415)555-1212')
+    accommodation.should respond_to(:price)
+    end
 end
+

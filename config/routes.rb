@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
 end
 
-# Routes as of 5/7/14 5:19 PM: 
-# Jeffs-MacBook-Pro-2:nfbnb Jeff$ rake routes
+# Routes as of 6/25/14 11 AM: 
+# Jeffs-MacBook-Pro-2:nfbnb Jeff$ bundle exec rake routes
 #                   Prefix Verb   URI Pattern                        Controller#Action
 #           accommodations GET    /accommodations(.:format)          accommodations#index
 #                          POST   /accommodations(.:format)          accommodations#create
@@ -23,7 +23,9 @@ end
 #                          PATCH  /accommodations/:id(.:format)      accommodations#update
 #                          PUT    /accommodations/:id(.:format)      accommodations#update
 #                          DELETE /accommodations/:id(.:format)      accommodations#destroy
-#                     root GET    /                                  accommodations#index
+#                     root GET    /                                  accommodations#welcome
+#             search_other GET    /accommodation_search(.:format)    accommodations#search
+#           search_results GET    /accommodation_results(.:format)   accommodations#results
 #         new_user_session GET    /users/sign_in(.:format)           devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)           devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)          devise/sessions#destroy

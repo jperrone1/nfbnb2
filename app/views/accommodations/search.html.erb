@@ -1,5 +1,5 @@
 
-<h1>City Search Results</h1>
+<h1>Search Results</h1>
 
 <div id="map-container">
   <div id="map-canvas"/>
@@ -30,7 +30,7 @@
 <% flash[:errors] %>
 
 <% if @accommodations.blank? %> 
-  <p>Your search - <%= @search.q %> <%= lookup_price_range_label @search.max_price %> - did not match any documents.</p>
+  <p>Your search - <%= @search.q %> <%= lookup_price_range_label @search.max_price %> - did not match any accommodations.</p>
 <% else %> 
  
 <% @accommodations.each do |accommodation| %>

@@ -25,6 +25,23 @@ describe "Accommodations Management" do
 
   end
 
+
+    describe 'searching for an accommodation' do
+
+    it 'renders search results page' do
+
+      get "/"
+      expect(response.body).to include('Search')
+
+      get '/accommodation_search/', simple_search: { city: "San Francisco" }
+
+      expect(response).to render_template(:search)
+
+    end
+
+  end
+
+end
 # before :each do 
 #   @user = User.create(email:'gt@nf.com', first_name:'George', last_name:'Tyrebiter', password:'87654321', password_confirmation:'87654321')
 #   sign_in @user
@@ -51,4 +68,3 @@ describe "Accommodations Management" do
   #   end
 
   # end
-end

@@ -3,12 +3,21 @@
 Sign up and Log in links: -->
 
 <!-- Show a link to allow a user to list a new accommodation: -->
-<%= link_to "List Space", new_accommodation_path %>
+<%= button_to "List Space", new_accommodation_path, method: "get" %>
 
 <h1>Welcome to NoFeeBnB!</h1> 
 <h4>NoFeeBnb allows you to list or rent a place to stay.</h4>
 <h5>It's free to list, and we don't charge fees to renters!</h5>
 <br>
+
+<div class="jumbotron">
+  <div class="container">
+<!--     <h1>Find a place to stay.</h1>
+    <p>Rent from people in over 34,000 cities and 192 countries.</p>
+    <a href="#">Learn More</a> -->
+  </div>
+</div> 
+
 <!-- <h2>Search for listings in your favorite city:</h2>
 
 <%#= form_for :search, url: search_results_path, method: "get" do |f| %>
@@ -26,15 +35,15 @@ Sign up and Log in links: -->
 
 <h2>Search for listings in your favorite city:</h2>
 
-<%= form_for :simple_search, url: search_other_path, method: "get" do |f| %>
+<%= form_for :simple_search, url: search_other_path, method: "get", class: "form-horizontal", role: "form"  do |f| %>
 
-  <div class="field"> 
+  <div class="form-group"> 
     <%= f.label :city %>
     <%= f.text_field :q, :autofocus => true %>
   </div>
 
-  <div class="actions">    
-    <%= f.submit 'Search' %>
+  <div class="form-group">    
+    <%= f.submit 'Search', class: "btn btn-default" %>
   </div>
 
 <% end %>

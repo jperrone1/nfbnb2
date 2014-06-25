@@ -5,7 +5,7 @@ class SimpleSearch
   attr_accessor :q, :max_price
   validates_length_of :q, minimum: 2, message: 'Please enter at least 2 letters to search'
 
-  # Add your other search params or validations here
+  # Add other search params or validations here:
 
   def persisted?
     false
