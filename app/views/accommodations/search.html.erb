@@ -34,7 +34,7 @@
 <% else %> 
  
 <% @accommodations.each do |accommodation| %>
-
+<div class="accomodation">
   <div class="col-md-8 col-sm-8">
     <p><%= image_tag accommodation.image.url(:square) %></p>
   </div>
@@ -48,6 +48,7 @@
       <p>Address: <%= accommodation.address1 %></p>
       <p>Address 2: <%= accommodation.address2 %></p>
       <p>Phone: <%= accommodation.phone %></p>
+    </div>
 
 <!--  I decided not to include these fields in the search results now:
 
@@ -55,8 +56,8 @@
       <p>Zip: <%#= accommodation.zip %></p>
       <p>Phone: <%#= accommodation.phone %></p> -->
 
-    </div>
   </div>
-  <p> --------------- </p>
+</div>
+  <hr>
 <% end %>
 <% end %>

@@ -13,10 +13,12 @@ class Accommodation < ActiveRecord::Base
   # Create ActiveRecord methods to facilitate data retrieval:
   belongs_to :user
 
+  # Validations for form data: 
   validates :price, presence: true, inclusion: { in: 0..20000, message: "The price must be between 0 and 20000"}
   validates :description, presence: true, length: { minimum: 4, maximum: 6000}
   validates :listing_type, presence: true 
 
+  # Custom validation; see valid_choice method below: 
   validate :valid_choice
 
   validates :city, presence: true
@@ -25,16 +27,16 @@ class Accommodation < ActiveRecord::Base
   validates :zip, presence: true, length: { minimum: 5, maximum: 10}
   validates :phone, presence: true, length: { minimum: 7, maximum: 100}
 
-  
-
 
   geocoded_by :full_street_address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
+  # Method to combine multiple data columns into form used by geocoder: 
   def full_street_address
     [address1, address2, city, state, zip].compact.join(', ')
   end
 
+  # Method to validate the choice field selection: 
   def valid_choice
     if listing_type != "Entire home/apt." && listing_type != "Private room" && listing_type!= "Shared room" 
       errors.add(:listing_type, "You must choose a valid listing type. Entire home/apt., Private room or Shared room.")

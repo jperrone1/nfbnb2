@@ -5,7 +5,7 @@ class SimpleSearch
   attr_accessor :q, :max_price, :zip
   validates_length_of :q, minimum: 2, message: 'Please enter at least 2 letters to search'
 
-  # Add other search params or validations here:
+  # Other search params or validations here:
 
   def persisted?
     false
@@ -29,30 +29,22 @@ class SimpleSearch
     scope = Accommodation.all
     unless self.q.blank?
       scope = scope.where("city ILIKE (? || '%')", self.q)
-      # puts "Added city scope: #{scope.to_sql}"
     end  
     unless self.max_price.blank?
       scope = scope.where('price <= ?', self.max_price)
-      # puts "Added price scope: #{scope.to_sql}"
-    end  
+    end 
 
-    # unless self.zip.blank?
-    #   scope = scope.where('zip', self.zip)
-    #   # puts "Added zip scope: #{scope.to_sql}"
-    # end  
-
-    # puts "Complete search for search_accomodations_by_form: #{scope.to_sql}"
     scope
   end  
 
   def search_within scope, column_name
-    #example where scope: only added when the q param is present
+    # Example where scope: only added when the q param is present
     unless self.q.blank?
       # SQL Injection protection example with LIKE operator
       # Which matches partial strings:
       scope = scope.where("#{column_name} ILIKE ('%' || ? || '%')", self.q)
     end
-    #Add your own filters here
+
     scope
   end
 
