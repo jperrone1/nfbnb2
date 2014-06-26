@@ -1,28 +1,16 @@
+
 README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app, "NoFeeBnB", is a website that allows you as a host to list your house, 
+apartment, spare bedroom or shared space for rental to a guest, or as a guest 
+to find accommodations in the location of your choice. 
 
-Things you may want to cover:
+A distinguishing feature is that unlike other sites, there is no listing fee to 
+use the site for listing as a host, or fee to find a rental as a guest.  
+Rent is paid directly by the guest to the host. 
 
-* Ruby version
+Presently it is only configured for use in the United States. 
 
-* System dependencies
+Jeffrey Perrone 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This code is copyright (C) 2014 by Jeffrey Perrone Product Development. 

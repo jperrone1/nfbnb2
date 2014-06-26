@@ -1,7 +1,6 @@
 <h3>Listing Details And Contact Information</h3>
 
 <h5>(click your browser back button to return to search results)</h5>
-<!-- Replace this with a button to do this when possible. -->
 
   <div class='spacer'></div>
   <!--   Image is displayed using Paperclip, hosted on Amazon s3. -->
@@ -23,27 +22,3 @@
   <li><%= link_to('Edit Listing', edit_accommodation_path(@accommodation)) %></li>
   <li><%= link_to('Delete Listing', @accommodation, :method => :delete, :confirm => 'Are you sure?') %></li>
 <h5>(click your browser back button to return to search results)</h5>
-
-<!-- <ul class="nav nav-pills">
-  <li><%#= link_to('New Recipe', new_recipe_path) %></li>
-  <li><%#= link_to('Edit Recipe', edit_recipe_path(@recipe)) %></li>
-  <li><%#= link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?') %></li>
-  <div class='spacer'></div>
-</ul>
-
-<div class="row">
-  <div class="col-md-5 col-sm-5">
-    <p class="lead"><%#= @recipe.name %></p>
-    <%#= image_tag(@recipe.image) %>
-    <br>
-    <h5 id="instructions-title">Instructions:</h5>
-    <p class="instructions"><%#= @recipe.instructions %></p>
-  </div>
-
-  <div class="col-md-7 col-sm-7">
-    <%# @ingredients.each do |ingredient| %>
-      <%#= ingredient.name %>
-      <%#= image_tag(ingredient.image,  size: "40x40") %>
-    <#% end %>
-  </div>
- </div> -->

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  // # Initialize map centered on San Francisco: 
+  // Initialize map centered on San Francisco: 
   function initialize() {
     var mapOptions = {
       center: new google.maps.LatLng(37.769067, -122.448500),
@@ -10,14 +10,14 @@ $(document).ready(function(){
 
     var pins = [];
 
-    // # Do AJAX call to get the search results to be mapped: 
+    // Do AJAX call to get the search results to be mapped: 
     $.get('/accommodation_results.json', {search: {city: $("#simple_search_q").val()}}).done(function(data) {
       pins = data
 
-      // # Pan the map so that it shows the region based on the lat and lng of the first result: 
+      // Pan the map so that it shows the region based on the lat and lng of the first result: 
       map.panTo({ lat: pins[0].latitude, lng: pins[0].longitude });
 
-      // # Display the pins on the map: 
+      // Display the pins on the map: 
 
       $.each(pins, function(index, item){
         addPin(item.latitude, item.longitude, item.description);
@@ -32,6 +32,8 @@ $(document).ready(function(){
         title: "Accommodation"
       });
 
+      
+      // Show an info window: 
       var newInfoWindow = new google.maps.InfoWindow({
         content: "<h3> " + name + "</h3>"
       });
