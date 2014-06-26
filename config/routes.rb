@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   devise_for :users 
 
+  get '/about_us', to: 'pages#about_us', as: 'about'
+  get '/contact_us', to: 'pages#contact_us', as: 'contact' 
+
 end
 
 # Routes as of 6/25/14 11 AM: 
