@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'pages/about_us'
+
+  get 'pages/contact_us'
+
   resources :accommodations
 
   root to: 'accommodations#welcome'
